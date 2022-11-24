@@ -23,7 +23,7 @@ variable "dns_prefix" {
 
 
 variable "agent_pool" {
-  default = ["defaultpool","Standard_D2s_v3"]
+  default = ["defaultpool", "Standard_D2s_v3"]
 }
 
 
@@ -41,5 +41,5 @@ variable "network_profile" {
 }
 
 variable "publicip_sku" {
-  default = ["Basic","Standard"]
+  default = ["Basic", "Standard"]
 }

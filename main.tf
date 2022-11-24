@@ -5,10 +5,10 @@ resource "azurerm_resource_group" "azure_k8s" {
 }
 
 resource "azurerm_container_registry" "k8s_acr" {
-  location = var.location
-  name = var.acr
-  resource_group_name = azurerm_resource_group.azure_k8s.name
-  sku = "Premium"
+  location                 = var.location
+  name                     = var.acr
+  resource_group_name      = azurerm_resource_group.azure_k8s.name
+  sku                      = "Premium"
   georeplication_locations = ["North Europe", "West Europe"]
 }
 
@@ -61,8 +61,8 @@ resource "azurerm_public_ip" "public_ip" {
   location            = var.location
   name                = "${local.common_name}-public_ip"
   resource_group_name = azurerm_resource_group.azure_k8s.name
-  allocation_method = "Static"
-  sku = element(var.publicip_sku,1 )
+  allocation_method   = "Static"
+  sku                 = element(var.publicip_sku, 1)
 }
 
 
@@ -75,10 +75,10 @@ resource "azurerm_kubernetes_cluster" "k8s_cluster" {
 
   resource_group_name = azurerm_resource_group.azure_k8s.name
   default_node_pool {
-    name             = element(var.agent_pool,0)
-    vm_size          = element(var.agent_pool,1)
-    node_count       = 2
-    availability_zones = ["1","2"]
+    name               = element(var.agent_pool, 0)
+    vm_size            = element(var.agent_pool, 1)
+    node_count         = 2
+    availability_zones = ["1", "2"]
   }
 
   service_principal {
